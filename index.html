@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BRABU Study - Premium Study Materials</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --secondary: #3b82f6;
+      --accent: #f59e0b;
+      --bg-color: #f8fafc;
+      --text-main: #0f172a;
+      --text-light: #64748b;
+      --card-bg: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* Header & Logo Section */
+    .header {
+      background: linear-gradient(135deg, #1e3a8a, #2563eb);
+      color: white;
+      text-align: center;
+      padding: 40px 20px 30px;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo-container {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 15px;
+      border-radius: 50%;
+      background-color: white;
+      padding: 4px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .logo-container img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .header h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .header p {
+      font-size: 1rem;
+      color: #e2e8f0;
+      max-width: 600px;
+      margin: 0 auto;
+      font-weight: 500;
+    }
+
+    /* Trust Badge */
+    .trust-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      backdrop-filter: blur(5px);
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 900px;
+      margin: -20px auto 40px;
+      padding: 0 15px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Product Card */
+    .product-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #e2e8f0;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+
+    /* 9:16 Thumbnail Setup */
+    .thumbnail {
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      background-color: #cbd5e1;
+      overflow: hidden;
+    }
+
+    .thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .subject-title {
+      font-size: 1.3rem;
+      color: var(--primary);
+      font-weight: 800;
+      margin-bottom: 5px;
+    }
+
+    .session-info {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .features-list {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+
+    .features-list li {
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .features-list li::before {
+      content: "✓";
+      color: #16a34a;
+      font-weight: bold;
+    }
+
+    /* Pricing & Button */
+    .action-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #f1f5f9;
+      padding-top: 15px;
+    }
+
+    .price-box {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .price {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #0f172a;
+      line-height: 1;
+    }
+
+    .price-label {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-top: 2px;
+    }
+
+    .buy-btn {
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+
+    .buy-btn:hover {
+      background: var(--secondary);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="logo-container">
+      <!-- Website Logo -->
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjjAlRdzG0IQiZcXI1dB1G8gNG8-snoaOhtn6D3PsnzjXSvFDrR6uTq6ICKPDfG12-ARNRNMhOLLhQcfxnpTbBvDnoJQFMxJT33YGNvOzBaR7nwZ_GBfA7QufYk5uXZV7wMud4r5X_0MH0piff4hxz1EFwqHkRZhEnwTj6inxJU_2tuqqsqaby_KOgEh1Sr/s1536/file_000000003d3c82118bd788c1fc684673.jpg" alt="BRABU Study Logo">
+    </div>
+    <div class="trust-badge">⭐ The Most Trusted Platform for BRABU Students</div>
+    <h1>BRABU Study Official</h1>
+    <p>Premium Subjective & Objective Study Materials for BA, B.Sc & B.Com. Score highest marks in your semester exams with our expertly crafted notes.</p>
+  </header>
+
+  <main class="container">
+    
+    <!-- Subject 1: Botany -->
+    <div class="product-card">
+      <div class="thumbnail">
+        <!-- Botany Thumbnail (9:16) -->
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg1FPW2uGW8cSb4YQVCBIbe1kMhLf92MC9qDyStRC4gY6qVbOr9wnExjKlqI7JEDnfljvquaK8ZAHqOfCmGAFX234n17sz_UcPZPbIMgIDeaatGGzcCWQ8YL6HbLE5SlB0Z1-5tqtNPwYHs-KGyszYnBvOlgsm7fHVkWtTWXtXws9jAZNI9kxebBdVlvjjD/s1600/file_00000000f2d8821195de40704fd0d972.png" alt="Botany MJC-1 Thumbnail">
+      </div>
+      <div class="card-content">
+        <h2 class="subject-title">Botany (MJC-1)</h2>
+        <div class="session-info">B.Sc Semester 1 • Session 2026-30</div>
+        
+        <ul class="features-list">
+          <li>Complete Unit-wise Theory (Bilingual)</li>
+          <li>Most Important Objective Questions (MCQs)</li>
+          <li>Based on Latest CBCS Syllabus</li>
+          <li>High-Quality PDF Format</li>
+        </ul>
+
+        <div class="action-row">
+          <div class="price-box">
+            <span class="price">₹9</span>
+            <span class="price-label">Only</span>
+          </div>
+          <!-- Botany Razorpay Link -->
+          <a href="https://rzp.io/rzp/VjQ0Yw3" class="buy-btn">Buy Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subject 2: Chemistry -->
+    <div class="product-card">
+      <div class="thumbnail">
+        <!-- Chemistry Thumbnail (9:16) -->
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxc8IBtjJrE-yVfRp-jtSqrzOlH2XDjisPAWUnD71VDzfQzjPZhJOcqDzEo6tlE_4pbptTSlRJtyjsvHt7ORXIodoihCvwieSATDC8D_A4vSaeuYMCmO7jmD0h8SDQOTZFmUvxGmloSqIlVBuwB49IEZDOkBXNU41Bib6P64kJPYCOgn9-eN-wADJGL871/s1600/file_00000000ced48211aa5e472006777902.png" alt="Chemistry MIC-1 Thumbnail">
+      </div>
+      <div class="card-content">
+        <h2 class="subject-title">Chemistry (MIC-1)</h2>
+        <div class="session-info">B.Sc Semester 1 • Session 2026-30</div>
+        
+        <ul class="features-list">
+          <li>Complete Unit-wise Theory (Bilingual)</li>
+          <li>Most Important Objective Questions (MCQs)</li>
+          <li>Based on Latest CBCS Syllabus</li>
+          <li>High-Quality PDF Format</li>
+        </ul>
+
+        <div class="action-row">
+          <div class="price-box">
+            <span class="price">₹9</span>
+            <span class="price-label">Only</span>
+          </div>
+          <!-- Chemistry Razorpay Link -->
+          <a href="YOUR_RAZORPAY_LINK_FOR_CHEMISTRY" class="buy-btn">Buy Now</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>© 2026 BRABU Study. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
