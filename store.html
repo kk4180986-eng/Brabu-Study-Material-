@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BRABU Study Official — Question Bank Store</title>
+  <style>
+    :root {
+      --primary: #0b2259;
+      --primary-light: #163a8f;
+      --accent: #ffcc00;
+      --danger: #e61919;
+      --success: #10b981;
+      --bg: #f1f5f9;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+    body { background: var(--bg); color: var(--text); padding-bottom: 50px; }
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: #fff; padding: 10px 14px; position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.18); display: flex; align-items: center; justify-content: space-between;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; }
+    .brand img { width: 42px; height: 42px; border-radius: 50%; background: #fff; padding: 2px; object-fit: contain; }
+    .brand h1 { font-size: 1.05rem; font-weight: 900; line-height: 1.15; }
+    .brand span { font-size: 0.72rem; color: var(--accent); font-weight: 700; display: block; }
+    .unlock-top-btn {
+      background: var(--accent); color: #000; border: none; padding: 8px 12px;
+      border-radius: 8px; font-size: 0.78rem; font-weight: 900; cursor: pointer;
+    }
+    .trust-bar { background: #0f172a; color: #e2e8f0; text-align: center; font-size: 0.76rem; padding: 7px 10px; font-weight: 600; }
+    .trust-bar b { color: var(--accent); }
+    .container { max-width: 980px; margin: 0 auto; padding: 14px; }    .hero-banner {
+      background: linear-gradient(135deg, #07163b 0%, #0b2259 55%, #1d4ed8 100%);
+      color: #fff; border-radius: 18px; padding: 18px; margin-bottom: 22px;
+      border: 2px solid var(--accent); box-shadow: 0 12px 28px rgba(11,34,89,0.28);
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .hero-text { flex: 1; min-width: 240px; }
+    .hero-tag {
+      display: inline-block; background: var(--danger); color: #fff;
+      font-size: 0.72rem; font-weight: 800; padding: 4px 10px; border-radius: 999px; margin-bottom: 8px;
+    }
+    .hero-text h2 { font-size: 1.45rem; font-weight: 900; color: var(--accent); line-height: 1.2; margin-bottom: 6px; }
+    .hero-text p { font-size: 0.86rem; color: #e2e8f0; line-height: 1.45; margin-bottom: 12px; }
+    .hero-features { display: flex; flex-wrap: wrap; gap: 8px; }
+    .hero-features span {
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,204,0,0.4);
+      padding: 5px 10px; border-radius: 8px; font-size: 0.75rem; font-weight: 700;
+    }
+    .hero-photo-box { text-align: center; margin: 0 auto; }
+    .hero-photo-box img {
+      width: 125px; height: 125px; object-fit: cover; border-radius: 50%;
+      border: 3px solid var(--accent); box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    }
+    .hero-photo-box div {
+      margin-top: 6px; font-size: 0.78rem; font-weight: 800; color: var(--accent);
+    }
+        .combo-card {
+      background: linear-gradient(145deg, #0b2259, #132f73); color: #fff;
+      border-radius: 16px; padding: 18px 15px; margin-bottom: 26px;
+      border: 2px solid var(--accent); box-shadow: 0 10px 24px rgba(11,34,89,0.22);
+    }
+    .combo-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+    .combo-header h2 { font-size: 1.28rem; font-weight: 900; color: var(--accent); }
+    .combo-header p { font-size: 0.82rem; color: #cbd5e1; margin-top: 3px; }
+    .price-box { background: rgba(255,255,255,0.12); padding: 7px 14px; border-radius: 12px; text-align: right; border: 1px solid rgba(255,204,0,0.4); }
+    .old-price { text-decoration: line-through; color: #fca5a5; font-size: 0.82rem; font-weight: 700; }
+    .new-price { font-size: 1.55rem; font-weight: 900; color: var(--accent); line-height: 1; }
+    .selector-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 10px; }
+    @media (min-width: 700px) { .selector-grid { grid-template-columns: repeat(3, 1fr); } }
+    .select-group { background: rgba(255,255,255,0.08); padding: 9px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.16); }
+    .select-group label { display: block; font-size: 0.72rem; font-weight: 800; margin-bottom: 5px; color: var(--accent); text-transform: uppercase; }
+    .select-group select { width: 100%; padding: 8px; border-radius: 8px; border: none; font-size: 0.83rem; font-weight: 700; color: #0f172a; background: #fff; }
+    .selected-summary { margin-top: 12px; background: rgba(0,0,0,0.28); padding: 10px; border-radius: 10px; font-size: 0.8rem; line-height: 1.45; }
+    .selected-summary strong { color: var(--accent); }
+    .pay-combo-btn {
+      width: 100%; margin-top: 14px; background: linear-gradient(90deg, #facc15, #f59e0b);
+      color: #000; border: none; padding: 14px; border-radius: 12px; font-size: 1.02rem; font-weight: 900; cursor: pointer;
+    }
+        .section-title { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 8px; }
+    .section-title h3 { font-size: 1.2rem; font-weight: 900; color: var(--primary); }
+    .section-title span { background: #fee2e2; color: var(--danger); font-size: 0.78rem; font-weight: 800; padding: 4px 10px; border-radius: 999px; }
+    .store-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    @media (min-width: 680px) { .store-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
+    @media (min-width: 920px) { .store-grid { grid-template-columns: repeat(4, 1fr); } }
+    .product-card {
+      background: var(--card); border-radius: 14px; overflow: hidden;
+      box-shadow: 0 4px 12px rgba(15,23,42,0.09); display: flex; flex-direction: column; border: 1px solid #cbd5e1;
+    }
+    .thumb-wrap { width: 100%; aspect-ratio: 9 / 16; background: #0f172a; overflow: hidden; }
+    .thumb-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .card-body { padding: 10px; display: flex; flex-direction: column; gap: 8px; flex: 1; justify-content: space-between; }
+    .card-title { font-size: 0.84rem; font-weight: 800; color: var(--text); line-height: 1.25; }
+    .buy-single-btn {
+      width: 100%; background: var(--primary); color: #fff; border: none;
+      padding: 10px 8px; border-radius: 8px; font-size: 0.85rem; font-weight: 800; cursor: pointer;
+    }
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(15,23,42,0.8);
+      display: none; align-items: center; justify-content: center; padding: 16px; z-index: 999;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box { background: #fff; width: 100%; max-width: 460px; border-radius: 16px; padding: 18px; max-height: 90vh; overflow-y: auto; }
+    .modal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; }
+    .modal-head h3 { font-size: 1rem; color: var(--primary); font-weight: 900; }
+    .close-btn { background: #f1f5f9; border: none; width: 30px; height: 30px; border-radius: 50%; font-weight: 800; cursor: pointer; }
+    .step-info { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e3a8a; padding: 10px; border-radius: 10px; font-size: 0.82rem; margin-bottom: 12px; line-height: 1.45; }
+    .unlock-confirm-btn { width: 100%; background: var(--success); color: #fff; border: none; padding: 12px; border-radius: 10px; font-size: 0.94rem; font-weight: 800; cursor: pointer; margin-bottom: 12px; }
+    .pdf-list { display: flex; flex-direction: column; gap: 10px; }
+    .pdf-item { display: flex; justify-content: space-between; align-items: center; background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px; border-radius: 10px; gap: 8px; }
+    .pdf-item span { font-size: 0.84rem; font-weight: 700; }
+    .pdf-item a { background: var(--danger); color: #fff; text-decoration: none; padding: 7px 11px; border-radius: 7px; font-size: 0.78rem; font-weight: 800; white-space: nowrap; }
+    footer { text-align: center; margin-top: 30px; font-size: 0.8rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+      <header>
+    <div class="brand">
+      <img src="https://i.ibb.co/zTpVjPGx/Screenshot-20260908-084245-removebg-preview.png" alt="BRABU Study Official Logo" />
+      <div>
+        <h1>BRABU Study Official</h1>
+        <span>Session 2026-30 • Semester 1 Store</span>
+      </div>
+    </div>
+    <button class="unlock-top-btn" onclick="openUnlockModal()">My PDFs 🔓</button>
+  </header>
+
+  <div class="trust-bar">
+    ✅ <b>Instant PDF Download</b> • 100% Secure Razorpay • BRABU FYUGP CBCS
+  </div>
+
+  <div class="container">
+    <section class="hero-banner">
+      <div class="hero-text">
+        <div class="hero-tag">🔥 23 November Mega Launch</div>
+        <h2>BRABU Semester 1 Question Bank PDF</h2>
+        <p>परीक्षा में आने वाले सबसे महत्वपूर्ण Objective + Subjective प्रश्नों का पूरा संग्रह। एक PDF सिर्फ <b>₹9</b> में या सभी 6 सब्जेक्ट्स का कॉम्बो सिर्फ <b>₹49</b> में!</p>
+        <div class="hero-features">
+          <span>✅ Unit-Wise VVI</span>
+          <span>✅ Objective + Subjective</span>
+          <span>✅ Instant PDF Access</span>
+        </div>
+      </div>
+      <div class="hero-photo-box">
+        <img src="https://i.ibb.co/kgQjW4TL/file-000000007e6c720694cfd137aa4d8193.jpg" alt="Kaushal Sir" />
+        <div>By Kaushal Sir</div>
+      </div>
+    </section>
+        <section class="combo-card">
+      <div class="combo-header">
+        <div>
+          <h2>🎯 6 Subjects Combo Pack (Semester 1)</h2>
+          <p>अपना MJC, MIC, MDC, AEC, SEC और VAC चुनें और 6 PDF एक साथ पाएं</p>
+        </div>
+        <div class="price-box">
+          <div class="old-price">₹54</div>
+          <div class="new-price">₹49</div>
+        </div>
+      </div>
+
+      <div class="selector-grid">
+        <div class="select-group">
+          <label for="mjcSelect">1. MJC-1 (Major)</label>
+          <select id="mjcSelect" onchange="updateComboSummary()">
+            <option value="botany_mjc">Botany (MJC)</option>
+            <option value="physics_mjc">Physics (MJC)</option>
+            <option value="chemistry_mjc">Chemistry (MJC)</option>
+            <option value="zoology_mjc">Zoology (MJC)</option>
+            <option value="hindi_mjc">Hindi (MJC)</option>
+          </select>
+        </div>
+        <div class="select-group">
+          <label for="micSelect">2. MIC-1 (Minor)</label>
+          <select id="micSelect" onchange="updateComboSummary()">
+            <option value="botany_mic">Botany (MIC)</option>
+            <option value="physics_mic">Physics (MIC)</option>
+            <option value="chemistry_mic">Chemistry (MIC)</option>
+            <option value="hindi_mic">Hindi (MIC)</option>
+          </select>
+        </div>
+        <div class="select-group">
+          <label for="mdcSelect">3. MDC-1 (Multi.)</label>
+          <select id="mdcSelect" onchange="updateComboSummary()">
+            <option value="english_mdc">English (MDC)</option>
+            <option value="hindi_mdc">Hindi (MDC)</option>
+            <option value="botany_mdc">Botany (MDC)</option>
+          </select>
+        </div>
+        <div class="select-group">
+          <label for="aecSelect">4. AEC-1 (Language)</label>
+          <select id="aecSelect" onchange="updateComboSummary()">
+            <option value="hindi_aec">Hindi (AEC)</option>
+            <option value="english_aec">English (AEC)</option>
+          </select>
+        </div>
+        <div class="select-group">
+          <label for="secSelect">5. SEC-1 (Skill)</label>
+          <select id="secSelect" onchange="updateComboSummary()">
+            <option value="comm_sec">Communication in Everyday Life (SEC)</option>
+          </select>
+        </div>
+        <div class="select-group">
+          <label for="vacSelect">6. VAC-1 (Value Added)</label>
+          <select id="vacSelect" onchange="updateComboSummary()">
+            <option value="swachh_vac">Swachh Bharat (VAC)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="selected-summary" id="comboSummary"></div>
+      <button class="pay-combo-btn" onclick="buyCombo49()">
+        💳 Pay ₹49 & Unlock 6 Selected PDFs
+      </button>
+    </section>    <div class="section-title">
+      <h3>📚 Single Subject Question Bank</h3>
+      <span>Only ₹9 Per PDF</span>
+    </div>
+
+    <div class="store-grid" id="singleStoreGrid"></div>
+  </div>
+
+  <div class="modal-overlay" id="unlockModal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3>BRABU Study Official — PDF Download</h3>
+        <button class="close-btn" onclick="closeUnlockModal()">✕</button>
+      </div>
+      <div id="beforeUnlockArea">
+        <div class="step-info">
+          <strong>स्टेप 1:</strong> खुले हुए Razorpay पेज पर अपना पेमेंट पूरा करें।<br />
+          <strong>स्टेप 2:</strong> पेमेंट के बाद वापस यहाँ आकर नीचे हरे बटन पर क्लिक करें।
+        </div>
+        <button class="unlock-confirm-btn" onclick="showUnlockedPDFs()">
+          ✅ मैंने पेमेंट कर दिया है — PDF खोलें
+        </button>
+      </div>
+      <div id="unlockedListArea" style="display: none;">
+        <div class="step-info" style="background:#ecfdf5; border-color:#a7f3d0; color:#065f46;">
+          🎉 धन्यवाद! आपके चुने हुए Question Bank PDF नीचे तैयार हैं:
+        </div>
+        <div class="pdf-list" id="pdfDownloadList"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>© 2026 <strong>BRABU Study Official</strong> • All Rights Reserved</footer>
+  <script>
+          const RAZORPAY_49_LINK = "https://rzp.io/rzp/xtsxzlvt";
+    const RAZORPAY_9_LINK  = "https://rzp.io/rzp/w9vEQRE";
+
+    // Yahan apni asli Google Drive PDF links paste karein
+    const DRIVE_PDF_LINKS = {
+      botany_mjc:    "https://drive.google.com/file/d/1bw5pdhCdNKmpINiNmyqO0cxsbY3fKuSY/view?usp=drivesdk",
+      physics_mjc:   "https://drive.google.com/file/d/1jST9QP3xLuPU3jD-trsUOx0wpO9KtP9j/view?usp=drivesdk",
+      chemistry_mjc: "https://drive.google.com/file/d/1LHMtDhs-G9_54aO073lnEpNtaVnMtkwM/view?usp=drivesdk",
+      zoology_mjc:   "https://drive.google.com/file/d/1ouM7qOmNGyd9BZCZ3q8xxmhqh2esrZD-/view?usp=drivesdk",
+      hindi_mjc:     "https://drive.google.com/file/d/1bA_i-6f-WDVxFTsaWWTi-3ymSnaPz7vP/view?usp=drivesdk",
+      botany_mic:    "https://drive.google.com/file/d/17TOV-Q4hgm2tM4_5KqZY-9YT4mUknbZ4/view?usp=drivesdk",
+      physics_mic:   "https://drive.google.com/file/d/1NT7okttO-nqdKvSMvLkyJVO3FhYXWqwc/view?usp=drivesdk",
+      chemistry_mic: "https://drive.google.com/file/d/1AR8qbXlOqh8f3tDti1WoK-gwpv36AewC/view?usp=drivesdk",
+      hindi_mic:     "https://drive.google.com/file/d/1N2iPZpA0uWz7swvpphaVWUk0hxOrGqCs/view?usp=drivesdk",
+      english_mdc:   "https://drive.google.com/file/d/1AR8qbXlOqh8f3tDti1WoK-gwpv36AewC/view?usp=drivesdk",
+      hindi_mdc:     "https://drive.google.com/file/d/1jST9QP3xLuPU3jD-trsUOx0wpO9KtP9j/view?usp=drivesdk",
+      botany_mdc:    "https://drive.google.com/file/d/1d-CzwTIrvsp_NEsjGzNHlUYxPbW4ftvn/view?usp=drivesdk",
+      hindi_aec:     "https://drive.google.com/file/d/18-jX3fB3LIKHU0xUPt36VanTsSaCOsZa/view?usp=drivesdk",
+      english_aec:   "https://drive.google.com/file/d/1Wz2UM1GxPF8a0hCubyw80iT8fVGkf4P_/view?usp=drivesdk",
+      comm_sec:      "https://drive.google.com/file/d/1OG4PSPPjDB0txBGdgWW-uW7pkIApkBC8/view?usp=drivesdk",
+      swachh_vac:    "https://drive.google.com/file/d/16iax5moRzD52jLhdVn8IjNIluuFxruLR/view?usp=drivesdk"
+    };
+        const SINGLE_PRODUCTS = [
+      { id: "p1",  title: "Question Bank PDF #1",  thumb: "https://i.ibb.co/wrrgmt3Q/file-00000000ff988211867613241f970b97.png", pdfKey: "hindi_aec" },
+      { id: "p2",  title: "Question Bank PDF #2",  thumb: "https://i.ibb.co/jkkvR0qs/file-00000000f9d082118e00a640c2ec6982.png", pdfKey: "botany_mic" },
+      { id: "p3",  title: "Question Bank PDF #3",  thumb: "https://i.ibb.co/21BbHV5H/file-000000002258821196bb57fa720525b9.png", pdfKey: "swachh_vac" },
+      { id: "p4",  title: "Question Bank PDF #4",  thumb: "https://i.ibb.co/Z7KVb7C/file-000000007ac08211a02d3fc1dd964223.png",  pdfKey: "comm_sec" },
+      { id: "p5",  title: "Question Bank PDF #5",  thumb: "https://i.ibb.co/JRN51TwP/file-00000000550c8211822ac4a2bf13c09c.png", pdfKey: "english_mdc" },
+      { id: "p6",  title: "Question Bank PDF #6",  thumb: "https://i.ibb.co/WvkfcKnS/file-000000007ba88211b6411cab1c8d20b6.png", pdfKey: "hindi_mic" },
+      { id: "p7",  title: "Question Bank PDF #7",  thumb: "https://i.ibb.co/zWcNVx2S/file-000000002b1882119c24a598ad1434eb.png", pdfKey: "hindi_mdc" },
+      { id: "p8",  title: "Question Bank PDF #8",  thumb: "https://i.ibb.co/v6q4fjSX/file-00000000194c8211879ea4595378f484.png", pdfKey: "physics_mjc" },
+      { id: "p9",  title: "Question Bank PDF #9",  thumb: "https://i.ibb.co/DD9RFKFj/file-00000000a9ec8211924d01efa5458f00.png", pdfKey: "physics_mic" },
+      { id: "p10", title: "Question Bank PDF #10", thumb: "https://i.ibb.co/9mQrX49X/file-00000000f2c882119d53b72409911c22.png", pdfKey: "botany_mjc" },
+      { id: "p11", title: "Question Bank PDF #11", thumb: "https://i.ibb.co/wNjdQ9Rh/file-000000002c188211b357ab62ea354f13.png", pdfKey: "chemistry_mjc" },
+      { id: "p12", title: "Question Bank PDF #12", thumb: "https://i.ibb.co/ZzS8KhTM/file-000000007b1c8211ab0684c238e7af4d.png", pdfKey: "chemistry_mic" },
+      { id: "p13", title: "Question Bank PDF #13", thumb: "https://i.ibb.co/23mVShqW/file-0000000070c482118932ec8559124ddc.png", pdfKey: "zoology_mjc" },
+      { id: "p14", title: "Question Bank PDF #14", thumb: "https://i.ibb.co/cSrwGhvm/file-00000000249082119f9e826f7ad8fd6e.png", pdfKey: "hindi_mjc" },
+      { id: "p15", title: "Question Bank PDF #15", thumb: "https://i.ibb.co/Fbv9Rg5C/file-00000000a1088211a2c29f6d2c399291.png", pdfKey: "english_aec" },
+      { id: "p16", title: "Question Bank PDF #16", thumb: "https://i.ibb.co/fzVYvVLv/file-00000000e5908211b30fcead4e2370b2.png", pdfKey: "botany_mdc" }
+    ];
+        function renderSingleStore() {
+      const grid = document.getElementById("singleStoreGrid");
+      grid.innerHTML = SINGLE_PRODUCTS.map(item => `
+        <div class="product-card">
+          <div class="thumb-wrap"><img src="${item.thumb}" alt="${item.title}" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-title">${item.title}</div>
+            <button class="buy-single-btn" onclick="buySingle9('${item.id}')">Buy Now — ₹9</button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function updateComboSummary() {
+      const ids = ["mjcSelect", "micSelect", "mdcSelect", "aecSelect", "secSelect", "vacSelect"];
+      const names = ids.map(id => document.getElementById(id).selectedOptions[0].text);
+      document.getElementById("comboSummary").innerHTML = `<strong>Selected 6 Subjects:</strong> ${names.join(" • ")}`;
+    }
+
+    function buyCombo49() {
+      const ids = ["mjcSelect", "micSelect", "mdcSelect", "aecSelect", "secSelect", "vacSelect"];
+      const chosen = ids.map(id => {
+        const el = document.getElementById(id);
+        return { name: el.selectedOptions[0].text, link: DRIVE_PDF_LINKS[el.value] || "#" };
+      });
+      localStorage.setItem("brabu_pending_pdfs", JSON.stringify(chosen));
+      window.open(RAZORPAY_49_LINK, "_blank");
+      openUnlockModal(false);
+    }
+
+    function buySingle9(productId) {
+      const item = SINGLE_PRODUCTS.find(p => p.id === productId);
+      if (!item) return;
+      localStorage.setItem("brabu_pending_pdfs", JSON.stringify([{ name: item.title, link: DRIVE_PDF_LINKS[item.pdfKey] || "#" }]));
+      window.open(RAZORPAY_9_LINK, "_blank");
+      openUnlockModal(false);
+    }
+
+    function openUnlockModal(autoShow = false) {
+      document.getElementById("unlockModal").classList.add("active");
+      document.getElementById("beforeUnlockArea").style.display = autoShow ? "none" : "block";
+      document.getElementById("unlockedListArea").style.display = autoShow ? "block" : "none";
+      if (autoShow) showUnlockedPDFs();
+    }
+
+    function closeUnlockModal() { document.getElementById("unlockModal").classList.remove("active"); }
+
+    function showUnlockedPDFs() {
+      const saved = JSON.parse(localStorage.getItem("brabu_pending_pdfs") || "[]");
+      const listEl = document.getElementById("pdfDownloadList");
+      listEl.innerHTML = saved.length === 0
+        ? `<p style="font-size:0.85rem; color:#475569;">पहले ऊपर से ₹49 कॉम्बो या ₹9 सिंगल PDF चुनें।</p>`
+        : saved.map(pdf => `<div class="pdf-item"><span>📄 ${pdf.name}</span><a href="${pdf.link}" target="_blank">Download PDF</a></div>`).join("");
+      document.getElementById("beforeUnlockArea").style.display = "none";
+      document.getElementById("unlockedListArea").style.display = "block";
+    }
+
+    renderSingleStore();
+    updateComboSummary();
+  </script>
+</body>
+</html>
+
+    
+    
