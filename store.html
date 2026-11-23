@@ -249,8 +249,8 @@
 
   <footer>© 2026 <strong>BRABU Study Official</strong> • All Rights Reserved</footer>
   <script>
-          const RAZORPAY_49_LINK = "https://rzp.io/rzp/xtsxzlvt";
-    const RAZORPAY_9_LINK  = "https://rzp.io/rzp/w9vEQRE";
+          const RAZORPAY_49_LINK = "https://rzp.io/rzp/7upM1nFx";
+    const RAZORPAY_9_LINK  = "https://rzp.io/rzp/2D19RT7R";
 
     // Yahan apni asli Google Drive PDF links paste karein
     const DRIVE_PDF_LINKS = {
@@ -308,42 +308,63 @@
       document.getElementById("comboSummary").innerHTML = `<strong>Selected 6 Subjects:</strong> ${names.join(" • ")}`;
     }
 
-    function buyCombo49() {
+        function buyCombo49() {
       const ids = ["mjcSelect", "micSelect", "mdcSelect", "aecSelect", "secSelect", "vacSelect"];
       const chosen = ids.map(id => {
         const el = document.getElementById(id);
         return { name: el.selectedOptions[0].text, link: DRIVE_PDF_LINKS[el.value] || "#" };
       });
       localStorage.setItem("brabu_pending_pdfs", JSON.stringify(chosen));
-      window.open(RAZORPAY_49_LINK, "_blank");
-      openUnlockModal(false);
+      // Seedha Razorpay par bhejega (pehle green button nahi khulega)
+      window.location.href = RAZORPAY_49_LINK;
     }
 
     function buySingle9(productId) {
       const item = SINGLE_PRODUCTS.find(p => p.id === productId);
       if (!item) return;
       localStorage.setItem("brabu_pending_pdfs", JSON.stringify([{ name: item.title, link: DRIVE_PDF_LINKS[item.pdfKey] || "#" }]));
-      window.open(RAZORPAY_9_LINK, "_blank");
-      openUnlockModal(false);
+      // Seedha Razorpay par bhejega (pehle green button nahi khulega)
+      window.location.href = RAZORPAY_9_LINK;
+    }
+
+    // Check karega ki kya student Razorpay se payment karke wapas aaya hai
+    function isPaymentDone() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get("paid") === "yes";
     }
 
     function openUnlockModal(autoShow = false) {
+      if (!isPaymentDone()) {
+        alert("Pehle ₹9 ya ₹49 ka payment complete karein, uske baad hi PDF khulega!");
+        return;
+      }
       document.getElementById("unlockModal").classList.add("active");
       document.getElementById("beforeUnlockArea").style.display = autoShow ? "none" : "block";
       document.getElementById("unlockedListArea").style.display = autoShow ? "block" : "none";
       if (autoShow) showUnlockedPDFs();
     }
 
-    function closeUnlockModal() { document.getElementById("unlockModal").classList.remove("active"); }
+    function closeUnlockModal() {
+      document.getElementById("unlockModal").classList.remove("active");
+    }
 
     function showUnlockedPDFs() {
+      if (!isPaymentDone()) {
+        alert("Bina payment ke PDF unlock nahi hoga!");
+        return;
+      }
       const saved = JSON.parse(localStorage.getItem("brabu_pending_pdfs") || "[]");
       const listEl = document.getElementById("pdfDownloadList");
       listEl.innerHTML = saved.length === 0
-        ? `<p style="font-size:0.85rem; color:#475569;">पहले ऊपर से ₹49 कॉम्बो या ₹9 सिंगल PDF चुनें।</p>`
+        ? `<p style="font-size:0.85rem; color:#475569;">Koi PDF select nahi hai.</p>`
         : saved.map(pdf => `<div class="pdf-item"><span>📄 ${pdf.name}</span><a href="${pdf.link}" target="_blank">Download PDF</a></div>`).join("");
       document.getElementById("beforeUnlockArea").style.display = "none";
       document.getElementById("unlockedListArea").style.display = "block";
+    }
+
+    // Payment complete hokar wapas aane par hi green button wala popup khulega
+    if (isPaymentDone()) {
+      openUnlockModal(false);
     }
 
     renderSingleStore();
@@ -351,6 +372,3 @@
   </script>
 </body>
 </html>
-
-    
-    
