@@ -27,13 +27,14 @@
     .brand img { width: 42px; height: 42px; border-radius: 50%; background: #fff; padding: 2px; object-fit: contain; }
     .brand h1 { font-size: 1.05rem; font-weight: 900; line-height: 1.15; }
     .brand span { font-size: 0.72rem; color: var(--accent); font-weight: 700; display: block; }
-    .unlock-top-btn {
+        .unlock-top-btn {
       background: var(--accent); color: #000; border: none; padding: 8px 12px;
       border-radius: 8px; font-size: 0.78rem; font-weight: 900; cursor: pointer;
     }
     .trust-bar { background: #0f172a; color: #e2e8f0; text-align: center; font-size: 0.76rem; padding: 7px 10px; font-weight: 600; }
     .trust-bar b { color: var(--accent); }
-    .container { max-width: 980px; margin: 0 auto; padding: 14px; }    .hero-banner {
+    .container { max-width: 980px; margin: 0 auto; padding: 14px; }
+    .hero-banner {
       background: linear-gradient(135deg, #07163b 0%, #0b2259 55%, #1d4ed8 100%);
       color: #fff; border-radius: 18px; padding: 18px; margin-bottom: 22px;
       border: 2px solid var(--accent); box-shadow: 0 12px 28px rgba(11,34,89,0.28);
@@ -56,9 +57,7 @@
       width: 125px; height: 125px; object-fit: cover; border-radius: 50%;
       border: 3px solid var(--accent); box-shadow: 0 6px 18px rgba(0,0,0,0.35);
     }
-    .hero-photo-box div {
-      margin-top: 6px; font-size: 0.78rem; font-weight: 800; color: var(--accent);
-    }
+    .hero-photo-box div { margin-top: 6px; font-size: 0.78rem; font-weight: 800; color: var(--accent); }
         .combo-card {
       background: linear-gradient(145deg, #0b2259, #132f73); color: #fff;
       border-radius: 16px; padding: 18px 15px; margin-bottom: 26px;
@@ -118,7 +117,7 @@
   </style>
 </head>
 <body>
-      <header>
+  <header>
     <div class="brand">
       <img src="https://i.ibb.co/kgQjW4TL/file-000000007e6c720694cfd137aa4d8193.jpg" alt="BRABU Study Official Logo" />
       <div>
@@ -170,6 +169,7 @@
             <option value="physics_mjc">Physics (MJC)</option>
             <option value="chemistry_mjc">Chemistry (MJC)</option>
             <option value="zoology_mjc">Zoology (MJC)</option>
+            <option value="maths_mjc">Maths (MJC)</option>
             <option value="hindi_mjc">Hindi (MJC)</option>
           </select>
         </div>
@@ -179,6 +179,7 @@
             <option value="botany_mic">Botany (MIC)</option>
             <option value="physics_mic">Physics (MIC)</option>
             <option value="chemistry_mic">Chemistry (MIC)</option>
+            <option value="zoology_mic">Zoology (MIC)</option>
             <option value="hindi_mic">Hindi (MIC)</option>
           </select>
         </div>
@@ -215,7 +216,8 @@
       <button class="pay-combo-btn" onclick="buyCombo49()">
         💳 Pay ₹49 & Unlock 6 Selected PDFs
       </button>
-    </section>    <div class="section-title">
+    </section>
+        <div class="section-title">
       <h3>📚 Single Subject Question Bank</h3>
       <span>Only ₹9 Per PDF</span>
     </div>
@@ -240,7 +242,7 @@
       </div>
       <div id="unlockedListArea" style="display: none;">
         <div class="step-info" style="background:#ecfdf5; border-color:#a7f3d0; color:#065f46;">
-          🎉 धन्यवाद! आपके चुने हुए Question Bank PDF नीचे तैयार हैं:
+          🎉 धन्यवाद! आपके चुने हुए 6 Question Bank PDF नीचे तैयार हैं:
         </div>
         <div class="pdf-list" id="pdfDownloadList"></div>
       </div>
@@ -249,25 +251,29 @@
 
   <footer>© 2026 <strong>BRABU Study Official</strong> • All Rights Reserved</footer>
     <script>
-    const RAZORPAY_49_LINK = "https://rzp.io/rzp/h9nqCOCd";
+    const RAZORPAY_49_LINK = "https://rzp.io/rzp/uPGZ2Fs";
 
     const DRIVE_PDF_LINKS = {
       botany_mjc:    "https://drive.google.com/file/d/1N2iPZpA0uWz7swvpphaVWUk0hxOrGqCs/view?usp=drivesdk",
       physics_mjc:   "https://drive.google.com/file/d/1NT7okttO-nqdKvSMvLkyJVO3FhYXWqwc/view?usp=drivesdk",
       chemistry_mjc: "https://drive.google.com/file/d/1OG4PSPPjDB0txBGdgWW-uW7pkIApkBC8/view?usp=drivesdk",
       zoology_mjc:   "https://drive.google.com/file/d/16iax5moRzD52jLhdVn8IjNIluuFxruLR/view?usp=drivesdk",
+      maths_mjc:     "https://drive.google.com/file/d/1d-CzwTIrvsp_NEsjGzNHlUYxPbW4ftvn/view?usp=drivesdk",
+      hindi_mjc:     "https://drive.google.com/file/d/1jST9QP3xLuPU3jD-trsUOx0wpO9KtP9j/view?usp=drivesdk",
       botany_mic:    "https://drive.google.com/file/d/1bw5pdhCdNKmpINiNmyqO0cxsbY3fKuSY/view?usp=drivesdk",
       physics_mic:   "https://drive.google.com/file/d/17TOV-Q4hgm2tM4_5KqZY-9YT4mUknbZ4/view?usp=drivesdk",
       chemistry_mic: "https://drive.google.com/file/d/1Wz2UM1GxPF8a0hCubyw80iT8fVGkf4P_/view?usp=drivesdk",
+      zoology_mic:   "https://drive.google.com/file/d/18-jX3fB3LIKHU0xUPt36VanTsSaCOsZa/view?usp=drivesdk",
       hindi_mic:     "https://drive.google.com/file/d/1AR8qbXlOqh8f3tDti1WoK-gwpv36AewC/view?usp=drivesdk",
       english_mdc:   "https://drive.google.com/file/d/1LHMtDhs-G9_54aO073lnEpNtaVnMtkwM/view?usp=drivesdk",
-      hindi_mdc:     "https://drive.google.com/file/d/1AR8qbXlOqh8f3tDti1WoK-gwpv36AewC/view?usp=drivesdk",      
+      hindi_mdc:     "https://drive.google.com/file/d/1AR8qbXlOqh8f3tDti1WoK-gwpv36AewC/view?usp=drivesdk",
+      botany_mdc:    "https://drive.google.com/file/d/1bw5pdhCdNKmpINiNmyqO0cxsbY3fKuSY/view?usp=drivesdk",
       hindi_aec:     "https://drive.google.com/file/d/1jST9QP3xLuPU3jD-trsUOx0wpO9KtP9j/view?usp=drivesdk",
+      english_aec:   "https://drive.google.com/file/d/1LHMtDhs-G9_54aO073lnEpNtaVnMtkwM/view?usp=drivesdk",
       comm_sec:      "https://drive.google.com/file/d/1ouM7qOmNGyd9BZCZ3q8xxmhqh2esrZD-/view?usp=drivesdk",
       swachh_vac:    "https://drive.google.com/file/d/1bA_i-6f-WDVxFTsaWWTi-3ymSnaPz7vP/view?usp=drivesdk"
     };
-
-    const SINGLE_PRODUCTS = [
+        const SINGLE_PRODUCTS = [
       { id: "p1",  title: "Subject #1",  thumb: "https://i.ibb.co/wrrgmt3Q/file-00000000ff988211867613241f970b97.png", payLink: "https://rzp.io/rzp/R5DuFgwc" },
       { id: "p2",  title: "Subject #2",  thumb: "https://i.ibb.co/jkkvR0qs/file-00000000f9d082118e00a640c2ec6982.png", payLink: "https://rzp.io/rzp/s7n1KcF" },
       { id: "p3",  title: "Subject #3",  thumb: "https://i.ibb.co/21BbHV5H/file-000000002258821196bb57fa720525b9.png", payLink: "https://rzp.io/rzp/BK4DZw6" },
@@ -285,8 +291,7 @@
       { id: "p15", title: "Subject #15", thumb: "https://i.ibb.co/Fbv9Rg5C/file-00000000a1088211a2c29f6d2c399291.png", payLink: "https://rzp.io/rzp/wTKohgP" },
       { id: "p16", title: "Subject #16", thumb: "https://i.ibb.co/fzVYvVLv/file-00000000e5908211b30fcead4e2370b2.png", payLink: "https://rzp.io/rzp/tCR8sLD0" }
     ];
-
-    function renderSingleStore() {
+        function renderSingleStore() {
       const grid = document.getElementById("singleStoreGrid");
       grid.innerHTML = SINGLE_PRODUCTS.map(item => `
         <div class="product-card">
@@ -299,25 +304,30 @@
       `).join("");
     }
 
-    function updateComboSummary() {
+    function getCurrentSelected6() {
       const ids = ["mjcSelect", "micSelect", "mdcSelect", "aecSelect", "secSelect", "vacSelect"];
-      const names = ids.map(id => document.getElementById(id).selectedOptions[0].text);
-      document.getElementById("comboSummary").innerHTML = `<strong>Selected 6 Subjects:</strong> ${names.join(" • ")}`;
-    }
-
-    function buyCombo49() {
-      const ids = ["mjcSelect", "micSelect", "mdcSelect", "aecSelect", "secSelect", "vacSelect"];
-      const chosen = ids.map(id => {
+      return ids.map(id => {
         const el = document.getElementById(id);
         return { name: el.selectedOptions[0].text, link: DRIVE_PDF_LINKS[el.value] || "#" };
       });
+    }
+
+    function updateComboSummary() {
+      const chosen = getCurrentSelected6();
+      const names = chosen.map(item => item.name);
+      document.getElementById("comboSummary").innerHTML = `<strong>Selected 6 Subjects:</strong> ${names.join(" • ")}`;
+      localStorage.setItem("brabu_pending_pdfs", JSON.stringify(chosen));
+    }
+
+    function buyCombo49() {
+      const chosen = getCurrentSelected6();
       localStorage.setItem("brabu_pending_pdfs", JSON.stringify(chosen));
       window.location.href = RAZORPAY_49_LINK;
     }
 
     function buySingle9(productId) {
       const item = SINGLE_PRODUCTS.find(p => p.id === productId);
-      if (!item || !item.payLink || item.payLink.startsWith("YAHAN_LINK_")) {
+      if (!item || !item.payLink) {
         alert("Is card ka payment link abhi set nahi hua hai.");
         return;
       }
@@ -325,8 +335,8 @@
     }
 
     function isComboPaid() {
-      const params = new URLSearchParams(window.location.search);
-      return params.get("paid") === "yes";
+      const paid = new URLSearchParams(window.location.search).get("paid");
+      return paid === "done" || paid === "yes" || paid === "combo49";
     }
 
     function openUnlockModal(autoShow = false) {
@@ -349,21 +359,27 @@
         alert("Bina payment ke PDF unlock nahi hoga!");
         return;
       }
-      const saved = JSON.parse(localStorage.getItem("brabu_pending_pdfs") || "[]");
+      let saved = JSON.parse(localStorage.getItem("brabu_pending_pdfs") || "[]");
+      if (saved.length === 0) {
+        saved = getCurrentSelected6();
+      }
       const listEl = document.getElementById("pdfDownloadList");
-      listEl.innerHTML = saved.length === 0
-        ? `<p style="font-size:0.85rem; color:#475569;">Koi PDF select nahi hai.</p>`
-        : saved.map(pdf => `<div class="pdf-item"><span>📄 ${pdf.name}</span><a href="${pdf.link}" target="_blank">Download PDF</a></div>`).join("");
+      listEl.innerHTML = saved.map(pdf => `
+        <div class="pdf-item">
+          <span>📄 ${pdf.name}</span>
+          <a href="${pdf.link}" target="_blank">Download PDF</a>
+        </div>
+      `).join("");
       document.getElementById("beforeUnlockArea").style.display = "none";
       document.getElementById("unlockedListArea").style.display = "block";
     }
 
+    renderSingleStore();
+    updateComboSummary();
+
     if (isComboPaid()) {
       openUnlockModal(false);
     }
-
-    renderSingleStore();
-    updateComboSummary();
   </script>
 </body>
 </html>
