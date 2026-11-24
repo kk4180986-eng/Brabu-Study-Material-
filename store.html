@@ -161,53 +161,50 @@
         </div>
       </div>
 
-      <div class="selector-grid">
+            <div class="selector-grid">
         <div class="select-group">
           <label for="mjcSelect">1. MJC-1 (Major)</label>
           <select id="mjcSelect" onchange="updateComboSummary()">
-            <option value="botany_mjc">Botany (MJC)</option>
-            <option value="physics_mjc">Physics (MJC)</option>
-            <option value="chemistry_mjc">Chemistry (MJC)</option>
-            <option value="zoology_mjc">Zoology (MJC)</option>
-            <option value="maths_mjc">Maths (MJC)</option>
-            <option value="hindi_mjc">Hindi (MJC)</option>
+            <option value="https://drive.google.com/file/d/1N2iPZpA0uWz7swvpphaVWUk0hxOrGqCs/view?usp=drivesdk">Botany (MJC)</option>
+            <option value="https://drive.google.com/file/d/1NT7okttO-nqdKvSMvLkyJVO3FhYXWqwc/view?usp=drivesdk">Physics (MJC)</option>
+            <option value="https://drive.google.com/file/d/1OG4PSPPjDB0txBGdgWW-uW7pkIApkBC8/view?usp=drivesdk">Chemistry (MJC)</option>
+            <option value="https://drive.google.com/file/d/16iax5moRzD52jLhdVn8IjNIluuFxruLR/view?usp=drivesdk">Zoology (MJC)</option>
+            <option value="https://drive.google.com/file/d/1d-CzwTIrvsp_NEsjGzNHlUYxPbW4ftvn/view?usp=drivesdk">Maths (MJC)</option>
           </select>
         </div>
         <div class="select-group">
           <label for="micSelect">2. MIC-1 (Minor)</label>
           <select id="micSelect" onchange="updateComboSummary()">
-            <option value="botany_mic">Botany (MIC)</option>
-            <option value="physics_mic">Physics (MIC)</option>
-            <option value="chemistry_mic">Chemistry (MIC)</option>
-            <option value="zoology_mic">Zoology (MIC)</option>
-            <option value="hindi_mic">Hindi (MIC)</option>
+            <option value="https://drive.google.com/file/d/1bw5pdhCdNKmpINiNmyqO0cxsbY3fKuSY/view?usp=drivesdk">Botany (MIC)</option>
+            <option value="https://drive.google.com/file/d/17TOV-Q4hgm2tM4_5KqZY-9YT4mUknbZ4/view?usp=drivesdk">Physics (MIC)</option>
+            <option value="https://drive.google.com/file/d/1Wz2UM1GxPF8a0hCubyw80iT8fVGkf4P_/view?usp=drivesdk">Chemistry (MIC)</option>
+            <option value="https://drive.google.com/file/d/18-jX3fB3LIKHU0xUPt36VanTsSaCOsZa/view?usp=drivesdk">Zoology (MIC)</option>
+            <option value="https://drive.google.com/file/d/1AR8qbXlOqh8f3tDti1WoK-gwpv36AewC/view?usp=drivesdk">Hindi (MIC)</option>
           </select>
         </div>
         <div class="select-group">
           <label for="mdcSelect">3. MDC-1 (Multi.)</label>
           <select id="mdcSelect" onchange="updateComboSummary()">
-            <option value="english_mdc">English (MDC)</option>
-            <option value="hindi_mdc">Hindi (MDC)</option>
-            <option value="botany_mdc">Botany (MDC)</option>
+            <option value="https://drive.google.com/file/d/1LHMtDhs-G9_54aO073lnEpNtaVnMtkwM/view?usp=drivesdk">English (MDC)</option>
+            <option value="https://drive.google.com/file/d/1AR8qbXlOqh8f3tDti1WoK-gwpv36AewC/view?usp=drivesdk">Hindi (MDC)</option>
           </select>
         </div>
         <div class="select-group">
           <label for="aecSelect">4. AEC-1 (Language)</label>
           <select id="aecSelect" onchange="updateComboSummary()">
-            <option value="hindi_aec">Hindi (AEC)</option>
-            <option value="english_aec">English (AEC)</option>
+            <option value="https://drive.google.com/file/d/1jST9QP3xLuPU3jD-trsUOx0wpO9KtP9j/view?usp=drivesdk">Hindi (AEC)</option>
           </select>
         </div>
         <div class="select-group">
           <label for="secSelect">5. SEC-1 (Skill)</label>
           <select id="secSelect" onchange="updateComboSummary()">
-            <option value="comm_sec">Communication in Everyday Life (SEC)</option>
+            <option value="https://drive.google.com/file/d/1ouM7qOmNGyd9BZCZ3q8xxmhqh2esrZD-/view?usp=drivesdk">Communication in Everyday Life (SEC)</option>
           </select>
         </div>
         <div class="select-group">
           <label for="vacSelect">6. VAC-1 (Value Added)</label>
           <select id="vacSelect" onchange="updateComboSummary()">
-            <option value="swachh_vac">Swachh Bharat (VAC)</option>
+            <option value="https://drive.google.com/file/d/1bA_i-6f-WDVxFTsaWWTi-3ymSnaPz7vP/view?usp=drivesdk">Swachh Bharat (VAC)</option>
           </select>
         </div>
       </div>
@@ -304,11 +301,14 @@
       `).join("");
     }
 
-    function getCurrentSelected6() {
+        function getCurrentSelected6() {
       const ids = ["mjcSelect", "micSelect", "mdcSelect", "aecSelect", "secSelect", "vacSelect"];
       return ids.map(id => {
         const el = document.getElementById(id);
-        return { name: el.selectedOptions[0].text, link: DRIVE_PDF_LINKS[el.value] || "#" };
+        return {
+          name: el.selectedOptions[0].text,
+          link: el.value
+        };
       });
     }
 
@@ -316,7 +316,6 @@
       const chosen = getCurrentSelected6();
       const names = chosen.map(item => item.name);
       document.getElementById("comboSummary").innerHTML = `<strong>Selected 6 Subjects:</strong> ${names.join(" • ")}`;
-      localStorage.setItem("brabu_pending_pdfs", JSON.stringify(chosen));
     }
 
     function buyCombo49() {
@@ -378,7 +377,7 @@
     updateComboSummary();
 
     if (isComboPaid()) {
-      openUnlockModal(false);
+      openUnlockModal(true);
     }
   </script>
 </body>
